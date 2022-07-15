@@ -83,9 +83,33 @@
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
+int row = new Random().Next(3,6);
+int columns = new Random().Next(3,6);
 
+int[,] array = new int[row, columns];
+for (int i = 0; i < array.GetLength(0); i++)
+{
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+        array[i, j] = new Random().Next(1, 10);
 
-
+        System.Console.Write(array[i, j] + "\t");
+    }
+    System.Console.WriteLine();
+}
+System.Console.WriteLine("среднее арифметическое :");
+for (int i = 0; i < array.GetLength(1); i++)
+{
+    double Average=0;
+    int count=0;
+    for (int j = 0; j < array.GetLength(0); j++)
+    {
+        Average=Average+array[j,i];
+        count++;
+        
+    }
+    System.Console.Write($"{Math.Round(Average/count, 1)} \t");
+}
 
 // 4 друга должны посетить 12 пабов, в котором выпить по британской пинте пенного напитка. 
 // До каждого бара идти 15-20 минут, каждый пьет пинту за 15 минут. У первого друга лимит выпитого 1.1 литра, 
