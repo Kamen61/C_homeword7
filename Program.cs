@@ -17,29 +17,62 @@
 //     }
 //     System.Console.WriteLine();
 // }
+// Решение с помощью метода 
+// void ArrayDouble(int rows, int columns)
+// {
+//     double[,] array = new double[rows, columns];
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             array[i, j] = new Random().Next(-10, 10) + new Random().NextDouble();
+//             array[i, j] = Math.Round(array[i, j], 1);
+//             System.Console.Write(array[i, j] + "\t");
+//         }
+//         System.Console.WriteLine();
+//     }
+// }
+// ArrayDouble(10,10);
 
-void ArrayDouble(int rows, int columns)
-{
-    double[,] array = new double[rows, columns];
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            array[i, j] = new Random().Next(-10, 10) + new Random().NextDouble();
-            array[i, j] = Math.Round(array[i, j], 1);
-            System.Console.Write(array[i, j] + "\t");
-        }
-        System.Console.WriteLine();
-    }
-}
 
-ArrayDouble(10,10);
-// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+
+
+// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или 
+// же указание, что такого элемента нет.
 // Например, задан массив:
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
 // 17 -> такого числа в массиве нет
+
+// System.Console.Write("Введите строку и строчку числа через запятую :");
+// string indecesEntered = Console.ReadLine();
+// int[] indeces = Array.ConvertAll(indecesEntered.Split(","), int.Parse);
+// int indecesEnteredRow = indeces[0];
+// int indecesEnteredColumns = indeces[1];
+// int row = 5;
+// int columns = 5;
+
+// int[,] array = new int[row, columns];
+// for (int i = 0; i < array.GetLength(0); i++)
+// {
+//     for (int j = 0; j < array.GetLength(1); j++)
+//     {
+//         array[i, j] = new Random().Next(-5, 10);
+
+//         System.Console.Write(array[i, j] + "\t");
+//     }
+//     System.Console.WriteLine();
+// }
+
+// if (indecesEnteredRow < row && indecesEnteredColumns < columns)
+// {
+//     string resultMessage = Convert.ToString(array[indecesEnteredRow, indecesEnteredColumns]);
+//     System.Console.WriteLine("На позиции [{0}] находится {1}", indecesEntered, resultMessage);
+
+// }
+// else
+//     System.Console.WriteLine("[{0}] такого елемента нет",indecesEntered);
 
 
 
@@ -49,6 +82,9 @@ ArrayDouble(10,10);
 // 5 9 2 3
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
+
+
 
 
 // 4 друга должны посетить 12 пабов, в котором выпить по британской пинте пенного напитка. 
