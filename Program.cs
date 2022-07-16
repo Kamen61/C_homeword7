@@ -83,35 +83,87 @@
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
-int row = new Random().Next(3,6);
-int columns = new Random().Next(3,6);
+// int row = new Random().Next(3, 6);
+// int columns = new Random().Next(3, 6);
 
-int[,] array = new int[row, columns];
-for (int i = 0; i < array.GetLength(0); i++)
-{
-    for (int j = 0; j < array.GetLength(1); j++)
-    {
-        array[i, j] = new Random().Next(1, 10);
+// int[,] array = new int[row, columns];
+// for (int i = 0; i < array.GetLength(0); i++)
+// {
+//     for (int j = 0; j < array.GetLength(1); j++)
+//     {
+//         array[i, j] = new Random().Next(1, 10);
 
-        System.Console.Write(array[i, j] + "\t");
-    }
-    System.Console.WriteLine();
-}
-System.Console.WriteLine("среднее арифметическое :");
-for (int i = 0; i < array.GetLength(1); i++)
-{
-    double Average=0;
-    int count=0;
-    for (int j = 0; j < array.GetLength(0); j++)
-    {
-        Average=Average+array[j,i];
-        count++;
-        
-    }
-    System.Console.Write($"{Math.Round(Average/count, 1)} \t");
-}
+//         System.Console.Write(array[i, j] + "\t");
+//     }
+//     System.Console.WriteLine();
+// }
+// System.Console.WriteLine("среднее арифметическое :");
+// for (int i = 0; i < array.GetLength(1); i++)
+// {
+//     double Average = 0;
+//     int count = 0;
+//     for (int j = 0; j < array.GetLength(0); j++)
+//     {
+//         Average = Average + array[j, i];
+//         count++;
+
+//     }
+//     System.Console.Write($"{Math.Round(Average / count, 1)} \t");
+// }
 
 // 4 друга должны посетить 12 пабов, в котором выпить по британской пинте пенного напитка. 
 // До каждого бара идти 15-20 минут, каждый пьет пинту за 15 минут. У первого друга лимит выпитого 1.1 литра, 
 // у второго 1.5, у третьего 2.2 литра, у 4 - 3.3 литра, это их максимум. Необходимо выяснить, до скольки баров 
 // смогут дойти каждый из друзей(Пройденное расстояние (в барах)), пока не упадет. И сколько всего времени будет потрачено на выпивку.
+
+
+
+double[] drinkFriends = new double[4]; //кто сколько выпили
+int[] pessedBars = new int[4];//кто сколько баров прошел
+double[] drinkingTime = new double[4];//кто сколько потратил время на выпивку
+
+int[] friendLimitit = { 1100, 1500, 2200, 3300 };//лимит друзей
+
+double millilitersPinta = 568;
+double timeforOnePint = 15;
+int count = 0;
+
+double millilitersBeerPerMinute = millilitersPinta / timeforOnePint;//количество выпитого пива за 1 минуту
+millilitersBeerPerMinute=Math.Round(millilitersBeerPerMinute,2);
+while (count < 12)
+{
+    for (int j = 0; j < 4; j++)
+    {
+        if (drinkFriends[j] != friendLimitit[j])
+        {
+            if (drinkFriends[j] + millilitersPinta < friendLimitit[j])
+            {
+                drinkFriends[j] = drinkFriends[j] + millilitersPinta;
+                pessedBars[j]++;
+                
+            }
+            else
+            {
+                drinkFriends[j]=friendLimitit[j];
+                pessedBars[j]++;
+            }
+
+        }
+
+
+    }
+    count++;
+}
+for (int i = 0; i < 4; i++)
+{
+    drinkingTime[i]=friendLimitit[i]/millilitersBeerPerMinute;
+    drinkingTime[i]=Math.Round(drinkingTime[i],2);
+}
+
+System.Console.WriteLine("       Прошли баров");
+System.Console.WriteLine("Друг1 Друг2 Друг3 Друг4");
+System.Console.WriteLine($"{string.Join(";     ", pessedBars)}");
+System.Console.WriteLine();
+System.Console.WriteLine("Потратили время на выпивку");
+System.Console.WriteLine("Друг1  Друг2  Друг3  Друг4");
+System.Console.WriteLine($"{string.Join("; ", drinkingTime)}");
